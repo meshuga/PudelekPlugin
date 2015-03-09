@@ -2,6 +2,7 @@
   <id>eu.meshuga.pudelek</id>
   <name>Pudelek plugin for Intellij IDEA</name>
   <version>1.0</version>
+  <vendor>meshuga</vendor>
 
   <description><![CDATA[
       Remake of <a href="https://sites.google.com/site/pudelekeclipseplugin/" target="new">Pudelek Eclispe Plug-in</a>
