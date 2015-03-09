@@ -1,0 +1,42 @@
+<idea-plugin version="2">
+  <id>eu.meshuga.pudelek</id>
+  <name>Pudelek plugin for Intellij IDEA</name>
+  <version>1.0</version>
+
+  <description><![CDATA[
+      Remake of <a href="https://sites.google.com/site/pudelekeclipseplugin/" target="new">Pudelek Eclispe Plug-in</a>
+    ]]></description>
+
+  <change-notes><![CDATA[
+    ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="Pudelek" anchor="right" factoryClass="eu.meshuga.pudelek.toolbar.PudelekToolWindowFactory">
+    </toolWindow>
+  </extensions>
+
+  <application-components>
+    <component><implementation-class>eu.meshuga.pudelek.fs.PudelekFileSystem</implementation-class></component>
+    <component><implementation-class>eu.meshuga.pudelek.editor.PudelekWindowProvider</implementation-class></component>
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+  <depends>com.intellij.modules.lang</depends>
+</idea-plugin>
