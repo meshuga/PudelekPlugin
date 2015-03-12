@@ -16,21 +16,21 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.io.Reader;
+import java.io.StringReader;
 
 public class PudelekFileEditor extends UserDataHolderBase implements FileEditor {
     private JPanel mainPanel;
     private JEditorPane webPane;
     private PudelekEditorState state = new PudelekEditorState();
 
-    public PudelekFileEditor(Reader reader) throws IOException, BadLocationException {
+    public PudelekFileEditor(String articleHtml) throws IOException, BadLocationException {
         HTMLEditorKit htmlKit = new HTMLEditorKit();
         webPane.setEditorKit(htmlKit);
 
         HTMLDocument htmlDocument = (HTMLDocument) webPane.getDocument();
         htmlDocument.putProperty("IgnoreCharsetDirective", true);
         webPane.setSize(800, Integer.MAX_VALUE);
-        htmlKit.read(reader, htmlDocument, 0);
+        htmlKit.read(new StringReader(articleHtml), htmlDocument, 0);
     }
 
     @NotNull

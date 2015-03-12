@@ -10,6 +10,7 @@ import com.intellij.openapi.fileEditor.FileEditorState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.net.HttpConfigurable;
+import eu.meshuga.pudelek.model.ArticleFormatter;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import eu.meshuga.pudelek.fs.PudelekVirtualFile;
@@ -24,10 +25,12 @@ public class PudelekWindowProvider implements FileEditorProvider, ApplicationCom
 
     private static final Logger LOG = Logger.getInstance(PudelekWindowProvider.class);
     private HttpConfigurable httpConfigurable;
+    private ArticleFormatter articleFormatter;
 
     @Override
     public void initComponent() {
         httpConfigurable = ApplicationManager.getApplication().getComponent(HttpConfigurable.class);
+        articleFormatter = new ArticleFormatter();
     }
 
     @Override
@@ -48,7 +51,8 @@ public class PudelekWindowProvider implements FileEditorProvider, ApplicationCom
         try {
             HttpURLConnection httpURLConnection = httpConfigurable.openHttpConnection(pudelekVirtualFile.getPath());
             Reader reader = new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8");
-            pudelekFileEditor = new PudelekFileEditor(reader);
+            String articleHtml = articleFormatter.extractArticle(reader);
+            pudelekFileEditor = new PudelekFileEditor(articleHtml);
         } catch (IOException e) {
             LOG.info(e);
         } catch (BadLocationException e) {

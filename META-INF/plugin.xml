@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>eu.meshuga.pudelek</id>
   <name>Pudelek plugin for Intellij IDEA</name>
-  <version>1.0.1</version>
+  <version>1.1</version>
   <vendor>meshuga</vendor>
 
   <description><![CDATA[
